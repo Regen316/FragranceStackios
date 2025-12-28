@@ -23,8 +23,9 @@ struct FragranceStackiosApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .onAppear {
+                .task {
                     // Seed data on first launch
+                    await Task.yield() // Let the view fully initialize
                     seedDataIfNeeded()
                 }
         }
