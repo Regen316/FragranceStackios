@@ -102,8 +102,6 @@ struct FragranceStackiosApp: App {
     }
 
     private func createFragrances(context: ModelContext, notes: [String: Note]) -> [String: Fragrance] {
-        var fragrancesDict: [String: Fragrance] = [:]
-
         // 1. Afnan Supremacy Silver (Aventus clone)
         let supremacy = Fragrance(
             name: "Supremacy Silver",
