@@ -89,8 +89,15 @@ struct AddFragranceView: View {
                         label: "Release Year (optional)",
                         content: {
                             TextField("e.g., 2010", text: $releaseYear)
-                                .appTextFieldStyle()
                                 .keyboardType(.numberPad)
+                                .textFieldStyle(.plain)
+                                .padding(12)
+                                .background(Color.appCream)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                                )
                         }
                     )
 
