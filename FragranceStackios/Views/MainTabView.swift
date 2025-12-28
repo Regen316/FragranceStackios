@@ -111,7 +111,9 @@ struct LayeringLabContainerView: View {
                 }
             }
             .navigationTitle("Layering Lab")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.large)
+            #endif
             .background(Color.appBackground)
         }
     }

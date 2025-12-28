@@ -200,7 +200,9 @@ struct LayeringCalculatorView: View {
                 }
             }
             .navigationTitle("Layering Calculator")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.large)
+            #endif
             .background(Color.appBackground)
             .sheet(isPresented: $showSaveSheet) {
                 SaveComboSheet(

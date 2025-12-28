@@ -141,7 +141,9 @@ struct LayeringLabView: View {
                 }
             }
             .navigationTitle("Layering Lab")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.large)
+            #endif
             .background(Color.appBackground)
             .onAppear {
                 // Seed data if no combinations exist
