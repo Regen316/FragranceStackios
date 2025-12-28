@@ -189,7 +189,9 @@ struct CombinationDetailView: View {
                 .padding(.vertical, 20)
             }
             .background(Color.appBackground)
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .sheet(isPresented: $showLogSheet) {
                 LogComboSheet(combination: combination, isPresented: $showLogSheet)
             }
@@ -443,7 +445,9 @@ struct LogComboSheet: View {
             }
             .padding(16)
             .navigationTitle("Log Combination")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 }

@@ -387,7 +387,9 @@ struct SaveComboSheet: View {
                 }
             }
             .navigationTitle("Save Combination")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 

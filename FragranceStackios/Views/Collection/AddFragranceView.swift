@@ -123,7 +123,9 @@ struct AddFragranceView: View {
             .scrollContentBackground(.hidden)
             .background(Color.appBackground)
             .navigationTitle("Add Fragrance")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 

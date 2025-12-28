@@ -56,7 +56,9 @@ struct ContextSelectionView: View {
             }
             .background(Color.appBackground)
             .navigationTitle("Find Your Fragrance")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 

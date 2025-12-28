@@ -94,7 +94,9 @@ struct QuickLogSheet: View {
             .scrollContentBackground(.hidden)
             .background(Color.appBackground)
             .navigationTitle("Log a Wear")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {

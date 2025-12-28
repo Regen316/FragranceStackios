@@ -162,7 +162,9 @@ struct WearHistoryView: View {
             }
             .background(Color.appBackground)
             .navigationTitle("Wear History")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .sheet(isPresented: $showQuickLog) {
                 QuickLogSheet()
             }

@@ -146,7 +146,9 @@ struct PostWearFeedbackView: View {
             .scrollContentBackground(.hidden)
             .background(Color.appBackground)
             .navigationTitle("End-of-Day Feedback")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {

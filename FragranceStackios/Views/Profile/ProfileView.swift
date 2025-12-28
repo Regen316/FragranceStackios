@@ -49,7 +49,9 @@ struct ProfileView: View {
             }
             .background(Color.appBackground)
             .navigationTitle("Profile")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 }

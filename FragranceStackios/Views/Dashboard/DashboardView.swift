@@ -68,7 +68,9 @@ struct DashboardView: View {
             }
             .background(Color.appBackground)
             .navigationTitle("Dashboard")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 }

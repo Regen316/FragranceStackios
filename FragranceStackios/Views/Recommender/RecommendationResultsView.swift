@@ -69,7 +69,9 @@ struct RecommendationResultsView: View {
             }
             .background(Color.appBackground)
             .navigationTitle("Today's Pick")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 
