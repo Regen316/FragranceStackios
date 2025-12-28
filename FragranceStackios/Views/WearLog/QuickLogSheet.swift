@@ -85,7 +85,6 @@ struct QuickLogSheet: View {
 
                     HStack {
                         TextField("Temperature (°C)", text: $temperatureText)
-                            .keyboardType(.decimalPad)
                         Text("°C")
                             .foregroundColor(.gray)
                     }
