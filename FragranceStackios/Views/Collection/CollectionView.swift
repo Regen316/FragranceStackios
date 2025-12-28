@@ -158,7 +158,13 @@ struct CollectionView: View {
             .background(Color.appBackground)
             .navigationTitle("My Collection")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: {
+                    #if os(iOS)
+                    return .topBarTrailing
+                    #else
+                    return .primaryAction
+                    #endif
+                }()) {
                     Button(action: { showAddSheet = true }) {
                         Image(systemName: "plus")
                             .foregroundColor(.appGold)

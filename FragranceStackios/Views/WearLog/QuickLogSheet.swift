@@ -98,14 +98,26 @@ struct QuickLogSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: {
+                    #if os(iOS)
+                    return .topBarLeading
+                    #else
+                    return .cancellationAction
+                    #endif
+                }()) {
                     Button("Cancel") {
                         dismiss()
                     }
                     .foregroundColor(.appNavy)
                 }
 
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: {
+                    #if os(iOS)
+                    return .topBarTrailing
+                    #else
+                    return .confirmationAction
+                    #endif
+                }()) {
                     Button("Save") {
                         saveWearLog()
                     }

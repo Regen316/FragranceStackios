@@ -88,7 +88,13 @@ struct FragranceDetailView: View {
             .background(Color.appBackground)
             .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: {
+                    #if os(iOS)
+                    return .topBarLeading
+                    #else
+                    return .navigation
+                    #endif
+                }()) {
                     Button(action: { dismiss() }) {
                         HStack(spacing: 4) {
                             Image(systemName: "chevron.left")

@@ -150,7 +150,13 @@ struct PostWearFeedbackView: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: {
+                    #if os(iOS)
+                    return .topBarLeading
+                    #else
+                    return .cancellationAction
+                    #endif
+                }()) {
                     Button("Cancel") {
                         dismiss()
                     }
