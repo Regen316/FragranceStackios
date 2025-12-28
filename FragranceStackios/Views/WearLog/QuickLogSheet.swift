@@ -15,7 +15,7 @@ struct QuickLogSheet: View {
     @Query(sort: \Fragrance.name, order: .forward)
     var fragrances: [Fragrance]
 
-    @Query(sort: \UserFragrance.fragrance.name, order: .forward)
+    @Query(sort: \UserFragrance.createdAt, order: .reverse)
     var userFragrances: [UserFragrance]
 
     // Form state
