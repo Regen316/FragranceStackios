@@ -18,14 +18,15 @@ struct FragranceStackiosApp: App {
         } catch {
             fatalError("Failed to configure SwiftData: \(error)")
         }
-
-        // Seed data on first launch
-        seedDataIfNeeded()
     }
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .onAppear {
+                    // Seed data on first launch
+                    seedDataIfNeeded()
+                }
         }
         .modelContainer(container)
     }
