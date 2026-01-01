@@ -1,0 +1,56 @@
+# Supabase Configuration
+# See: https://supabase.com/docs/guides/cli/config
+
+[api]
+# Port to use for the API URL.
+port = 54321
+# Schemas to expose in your API.
+schemas = ["public", "graphql_public"]
+# Extra schemas to add to the search_path of every request.
+extra_search_path = ["public", "extensions"]
+# The maximum number of rows returned from a view, table, or stored procedure.
+max_rows = 1000
+
+[db]
+# Port to use for the local database URL.
+port = 54322
+# The database major version to use.
+major_version = 15
+
+[studio]
+# Port to use for Supabase Studio.
+port = 54323
+
+[auth]
+# The base URL of your website.
+site_url = "http://localhost:3000"
+# Allow/disallow new user signups to your project.
+enable_signup = true
+# Allow/disallow anonymous sign-ins to your project.
+enable_anonymous_sign_ins = false
+
+[auth.email]
+# Allow/disallow new user signups via email to your project.
+enable_signup = true
+# If enabled, a user will be required to confirm any email change on both the old and new email.
+double_confirm_changes = true
+# If enabled, users need to confirm their email address before signing in.
+enable_confirmations = false
+
+[auth.external.apple]
+enabled = true
+client_id = "env(APPLE_CLIENT_ID)"
+secret = "env(APPLE_SECRET)"
+
+# Edge Function configurations
+[functions.recommend]
+verify_jwt = true
+
+[functions.nl-query]
+verify_jwt = true
+
+[functions.search-fragrance]
+verify_jwt = true
+
+[functions.generate-description]
+verify_jwt = true
