@@ -6,12 +6,13 @@ enum SupabaseConfig {
     // MARK: - Supabase Credentials
     // Get these from your Supabase project settings: Settings > API
 
-    /// Your Supabase project URL (e.g., "https://xxxxx.supabase.co")
-    static let projectURL = "YOUR_SUPABASE_PROJECT_URL"
+    /// Your Supabase project URL
+    static let projectURL = "https://etgjrxsieugmzgdmktbx.supabase.co"
 
     /// Your Supabase anon/public key
+    /// Get this from: Supabase Dashboard → Settings → API → anon public
     /// This key is safe to include in the app - RLS protects your data
-    static let anonKey = "YOUR_SUPABASE_ANON_KEY"
+    static let anonKey = "YOUR_SUPABASE_ANON_KEY" // TODO: Get from Supabase Dashboard
 
     // MARK: - Edge Function URLs
     // These are automatically derived from your project URL
