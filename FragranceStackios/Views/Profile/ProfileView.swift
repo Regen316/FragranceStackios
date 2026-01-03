@@ -9,11 +9,12 @@ import SwiftUI
 import SwiftData
 
 struct ProfileView: View {
-    @State private var userName: String = "Stuart"
+    @State private var authManager = AuthManager.shared
     @State private var defaultLocation: String = "New York, NY"
     @State private var selectedOccasions: [Occasion] = [.office, .casual]
     @State private var isFahrenheit: Bool = true
     @State private var isDarkMode: Bool = false
+    @State private var showSignOutAlert = false
 
     @Query(sort: \UserFragrance.createdAt, order: .reverse)
     var userFragrances: [UserFragrance]
@@ -25,8 +26,11 @@ struct ProfileView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
-                    // User Info Section
-                    UserInfoSection(userName: $userName)
+                    // Account Section
+                    AccountSection(
+                        authManager: authManager,
+                        showSignOutAlert: $showSignOutAlert
+                    )
 
                     // Preferences Section
                     PreferencesSection(
@@ -52,14 +56,41 @@ struct ProfileView: View {
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
+            .alert("Sign Out", isPresented: $showSignOutAlert) {
+                Button("Cancel", role: .cancel) { }
+                Button("Sign Out", role: .destructive) {
+                    Task {
+                        try? await authManager.signOut()
+                    }
+                }
+            } message: {
+                Text("Are you sure you want to sign out?")
+            }
         }
     }
 }
 
-// MARK: - User Info Section
+// MARK: - Account Section
 
-struct UserInfoSection: View {
-    @Binding var userName: String
+struct AccountSection: View {
+    let authManager: AuthManager
+    @Binding var showSignOutAlert: Bool
+
+    private var userName: String {
+        authManager.profile?.displayName ?? authManager.profile?.email?.components(separatedBy: "@").first ?? "User"
+    }
+
+    private var userEmail: String {
+        authManager.profile?.email ?? "No email"
+    }
+
+    private var tierName: String {
+        authManager.profile?.subscriptionTier == "premium" ? "Premium" : "Free"
+    }
+
+    private var tierColor: Color {
+        authManager.profile?.subscriptionTier == "premium" ? .appGold : .gray
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -77,12 +108,40 @@ struct UserInfoSection: View {
                     Text(userName)
                         .font(.appHeadline())
                         .foregroundColor(.appNavy)
+
+                    Text(userEmail)
+                        .font(.appCaption())
+                        .foregroundColor(.gray)
                 }
 
                 Spacer()
+
+                // Tier badge
+                Text(tierName)
+                    .font(.appCaption())
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(tierColor)
+                    .clipShape(Capsule())
             }
             .padding(16)
             .fragranceCardStyle()
+
+            // Sign Out Button
+            Button(action: { showSignOutAlert = true }) {
+                HStack {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                        .foregroundColor(.red)
+                    Text("Sign Out")
+                        .foregroundColor(.red)
+                    Spacer()
+                }
+                .padding(16)
+                .background(Color.red.opacity(0.1))
+                .cornerRadius(12)
+            }
         }
     }
 }
