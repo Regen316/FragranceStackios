@@ -12,7 +12,7 @@ enum SupabaseConfig {
     /// Your Supabase anon/public key
     /// Get this from: Supabase Dashboard → Settings → API → anon public
     /// This key is safe to include in the app - RLS protects your data
-    static let anonKey = "YOUR_SUPABASE_ANON_KEY" // TODO: Get from Supabase Dashboard
+    static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0Z2pyeHNpZXVnbXpnZG1rdGJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyOTY4NTUsImV4cCI6MjA4Mjg3Mjg1NX0.AWxIbcvco297RXU0hdKl2UNyjSjom19E-dlhQ36yYv4"
 
     // MARK: - Edge Function URLs
     // These are automatically derived from your project URL
