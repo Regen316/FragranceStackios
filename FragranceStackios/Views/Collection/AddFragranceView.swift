@@ -89,8 +89,10 @@ struct AddFragranceView: View {
                         label: "Release Year (optional)",
                         content: {
                             TextField("e.g., 2010", text: $releaseYear)
+                                #if os(iOS)
                                 .keyboardType(.numberPad)
                                 .textFieldStyle(.plain)
+                                #endif
                                 .padding(12)
                                 .background(Color.appCream)
                                 .cornerRadius(8)
@@ -120,19 +122,34 @@ struct AddFragranceView: View {
                         }
                     )
 
-                    Spacer(minLength: 20)
-
                     // Action buttons
                     actionButtonsView
+                        .padding(.top, 20)
+                        .padding(.bottom, 40)
                 }
                 .padding(16)
             }
+            .scrollIndicators(.visible)
             .scrollContentBackground(.hidden)
             .background(Color.appBackground)
             .navigationTitle("Add Fragrance")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
+            .toolbar {
+                ToolbarItem(placement: {
+                    #if os(iOS)
+                    return .navigationBarLeading
+                    #else
+                    return .cancellationAction
+                    #endif
+                }()) {
+                    Button(action: { dismiss() }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.appNavy)
+                    }
+                }
+            }
         }
     }
 

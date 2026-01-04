@@ -50,10 +50,12 @@ struct ContextSelectionView: View {
                         }
                         .buttonStyle(PrimaryButtonStyle())
                     }
+                        .padding(.bottom, 40)
                 }
                 .padding(.horizontal, 20)
-                .padding(.vertical, 24)
+                .padding(.top, 24)
             }
+            .scrollIndicators(.visible)
             .background(Color.appBackground)
             .navigationTitle("Find Your Fragrance")
             #if os(iOS)

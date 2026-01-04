@@ -38,7 +38,11 @@ struct LayeringCalculatorView: View {
                                 .tag(Optional(frag))
                         }
                     }
+                    #if os(iOS)
                     .pickerStyle(.navigationLink)
+                    #else
+                    .pickerStyle(.menu)
+                    #endif
 
                     Picker("Fragrance 2", selection: $fragrance2) {
                         Text("Choose a fragrance").tag(nil as Fragrance?)
@@ -48,7 +52,11 @@ struct LayeringCalculatorView: View {
                                 .tag(Optional(frag))
                         }
                     }
+                    #if os(iOS)
                     .pickerStyle(.navigationLink)
+                    #else
+                    .pickerStyle(.menu)
+                    #endif
 
                     if fragrance1?.id == fragrance2?.id {
                         HStack(spacing: 8) {

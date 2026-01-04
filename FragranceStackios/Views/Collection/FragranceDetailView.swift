@@ -80,10 +80,10 @@ struct FragranceDetailView: View {
 
                     // Action buttons
                     actionButtonsSection
-
-                    Spacer(minLength: 20)
+                        .padding(.bottom, 40)
                 }
             }
+            .scrollIndicators(.visible)
             .scrollContentBackground(.hidden)
             .background(Color.appBackground)
             .navigationBarBackButtonHidden(true)

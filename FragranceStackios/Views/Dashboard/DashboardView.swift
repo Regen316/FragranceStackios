@@ -64,8 +64,10 @@ struct DashboardView: View {
                     .padding(.top, 8)
                 }
                 .padding(.horizontal, 16)
-                .padding(.vertical, 20)
+                .padding(.top, 20)
+                .padding(.bottom, 40)
             }
+            .scrollIndicators(.visible)
             .background(Color.appBackground)
             .navigationTitle("Dashboard")
             #if os(iOS)

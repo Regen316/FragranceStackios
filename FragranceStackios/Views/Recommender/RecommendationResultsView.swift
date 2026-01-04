@@ -62,11 +62,12 @@ struct RecommendationResultsView: View {
                         )
                     }
 
-                    Spacer(minLength: 24)
                 }
                 .padding(.horizontal, 20)
-                .padding(.vertical, 24)
+                .padding(.top, 24)
+                .padding(.bottom, 40)
             }
+            .scrollIndicators(.visible)
             .background(Color.appBackground)
             .navigationTitle("Today's Pick")
             #if os(iOS)

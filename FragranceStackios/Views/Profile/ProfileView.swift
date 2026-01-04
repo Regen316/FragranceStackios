@@ -44,13 +44,12 @@ struct ProfileView: View {
 
                     // App Settings
                     AppSettingsSection(isDarkMode: $isDarkMode)
-
-                    Spacer()
-                        .frame(height: 20)
+                        .padding(.bottom, 40)
                 }
                 .padding(.horizontal, 16)
-                .padding(.vertical, 20)
+                .padding(.top, 20)
             }
+            .scrollIndicators(.visible)
             .background(Color.appBackground)
             .navigationTitle("Profile")
             #if os(iOS)

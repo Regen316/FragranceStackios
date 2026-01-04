@@ -51,25 +51,29 @@ struct SignInView: View {
                         if isSignUp {
                             TextField("Display Name", text: $displayName)
                                 .textContentType(.name)
+                                #if os(iOS)
                                 .autocorrectionDisabled()
+                                #endif
                                 .padding()
-                                .background(Color(.systemGray6))
+                                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
 
                         TextField("Email", text: $email)
                             .textContentType(.emailAddress)
+                            #if os(iOS)
                             .autocapitalization(.none)
                             .autocorrectionDisabled()
                             .keyboardType(.emailAddress)
+                            #endif
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                             .clipShape(RoundedRectangle(cornerRadius: 12))
 
                         SecureField("Password", text: $password)
                             .textContentType(isSignUp ? .newPassword : .password)
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                     .padding(.horizontal)
@@ -97,13 +101,13 @@ struct SignInView: View {
                     // Divider
                     HStack {
                         Rectangle()
-                            .fill(Color(.systemGray4))
+                            .fill(Color.gray.opacity(0.3))
                             .frame(height: 1)
                         Text("or")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         Rectangle()
-                            .fill(Color(.systemGray4))
+                            .fill(Color.gray.opacity(0.3))
                             .frame(height: 1)
                     }
                     .padding(.horizontal)
@@ -125,10 +129,10 @@ struct SignInView: View {
                             .font(.callout)
                             .foregroundStyle(Color.appAccent)
                     }
-
-                    Spacer()
+                        .padding(.bottom, 40)
                 }
             }
+            .scrollIndicators(.visible)
             .background(Color.appBackground)
         }
     }

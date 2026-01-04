@@ -184,10 +184,11 @@ struct CombinationDetailView: View {
                     }
                     .buttonStyle(PrimaryButtonStyle())
                     .padding(.horizontal, 16)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 40)
                 }
-                .padding(.vertical, 20)
+                .padding(.top, 20)
             }
+            .scrollIndicators(.visible)
             .background(Color.appBackground)
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
