@@ -60,9 +60,9 @@ final class AuthManager {
         for await (event, session) in supabase.auth.authStateChanges {
             switch event {
             case .signedIn, .tokenRefreshed:
-                currentUser = session?.user
-                if let userId = session?.user.id {
-                    await fetchProfile(userId: userId)
+                if let session = session {
+                    currentUser = session.user
+                    await fetchProfile(userId: session.user.id)
                 }
             case .signedOut:
                 currentUser = nil
