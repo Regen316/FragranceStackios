@@ -77,7 +77,7 @@ struct AccountSection: View {
     @Binding var showSignOutAlert: Bool
 
     private var userName: String {
-        authManager.profile?.displayName ?? authManager.profile?.email?.components(separatedBy: "@").first ?? "User"
+        authManager.profile?.displayName ?? authManager.profile?.email.components(separatedBy: "@").first ?? "User"
     }
 
     private var userEmail: String {
@@ -85,11 +85,11 @@ struct AccountSection: View {
     }
 
     private var tierName: String {
-        authManager.profile?.subscriptionTier == "premium" ? "Premium" : "Free"
+        authManager.profile?.tier == "premium" ? "Premium" : "Free"
     }
 
     private var tierColor: Color {
-        authManager.profile?.subscriptionTier == "premium" ? .appGold : .gray
+        authManager.profile?.tier == "premium" ? .appGold : .gray
     }
 
     var body: some View {
