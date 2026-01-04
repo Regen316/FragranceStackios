@@ -23,7 +23,7 @@ struct AuthStateView: View {
                         .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(AppTheme.Colors.background)
+                .background(Color.appBackground)
             } else if authManager.isAuthenticated {
                 // User is signed in - show main app
                 MainTabView()

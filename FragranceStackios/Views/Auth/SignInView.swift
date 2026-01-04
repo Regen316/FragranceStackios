@@ -24,14 +24,14 @@ struct SignInView: View {
                     VStack(spacing: 8) {
                         Image(systemName: "drop.fill")
                             .font(.system(size: 60))
-                            .foregroundStyle(AppTheme.Colors.accent)
+                            .foregroundStyle(Color.appAccent)
 
                         Text("FragranceStack")
-                            .font(.appTitle)
-                            .foregroundStyle(AppTheme.Colors.primary)
+                            .font(.appTitle())
+                            .foregroundStyle(Color.appPrimary)
 
                         Text(isSignUp ? "Create your account" : "Welcome back")
-                            .font(.appSubheadline)
+                            .font(.appSubheadline())
                             .foregroundStyle(.secondary)
                     }
                     .padding(.top, 40)
@@ -87,7 +87,7 @@ struct SignInView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(AppTheme.Colors.accent)
+                        .background(Color.appAccent)
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
@@ -123,13 +123,13 @@ struct SignInView: View {
                     Button(action: { isSignUp.toggle() }) {
                         Text(isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up")
                             .font(.callout)
-                            .foregroundStyle(AppTheme.Colors.accent)
+                            .foregroundStyle(Color.appAccent)
                     }
 
                     Spacer()
                 }
             }
-            .background(AppTheme.Colors.background)
+            .background(Color.appBackground)
         }
     }
 
