@@ -106,9 +106,7 @@ final class AuthManager {
                 data: displayName != nil ? ["full_name": .string(displayName!)] : nil
             )
             currentUser = response.user
-            if let userId = response.user?.id {
-                await fetchProfile(userId: userId)
-            }
+            await fetchProfile(userId: response.user.id)
         } catch {
             errorMessage = error.localizedDescription
             throw error
